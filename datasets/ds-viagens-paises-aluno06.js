@@ -1,36 +1,43 @@
 function createDataset(fields, constraints, sortFields) {
-    var dataset = DatasetBuilder.newDataset();
+  // Assinatura padrão de datasets no Fluig:
+  // - fields: colunas solicitadas pela consulta
+  // - constraints: filtros recebidos na chamada
+  // - sortFields: campos pedidos para ordenação
+  void fields;
+  void constraints;
+  void sortFields;
 
-    dataset.addColumn("codigo");
-    dataset.addColumn("nome");
-    dataset.addColumn("sigla");
+  var ds = DatasetBuilder.newDataset();
+  var rows = [
+    ["BRA", "Brasil", "BR"],
+    ["USA", "Estados Unidos", "US"],
+    ["ARG", "Argentina", "AR"],
+    ["CHL", "Chile", "CL"],
+    ["URY", "Uruguai", "UY"],
+    ["PRY", "Paraguai", "PY"],
+    ["BOL", "Bolívia", "BO"],
+    ["PER", "Peru", "PE"],
+    ["COL", "Colômbia", "CO"],
+    ["VEN", "Venezuela", "VE"],
+    ["MEX", "México", "MX"],
+    ["DEU", "Alemanha", "DE"],
+    ["ESP", "Espanha", "ES"],
+    ["PRT", "Portugal", "PT"],
+    ["FRA", "França", "FR"],
+    ["ITA", "Itália", "IT"],
+    ["GBR", "Reino Unido", "GB"],
+    ["JPN", "Japão", "JP"],
+    ["CHN", "China", "CN"],
+    ["AUS", "Austrália", "AU"],
+  ];
 
-    var paises = [
-        ["BRA", "Brasil", "BR"],
-        ["ARG", "Argentina", "AR"],
-        ["CHL", "Chile", "CL"],
-        ["COL", "Colômbia", "CO"],
-        ["PER", "Peru", "PE"],
-        ["URY", "Uruguai", "UY"],
-        ["PRY", "Paraguai", "PY"],
-        ["BOL", "Bolívia", "BO"],
-        ["ECU", "Equador", "EC"],
-        ["VEN", "Venezuela", "VE"],
-        ["USA", "Estados Unidos", "US"],
-        ["CAN", "Canadá", "CA"],
-        ["MEX", "México", "MX"],
-        ["PRT", "Portugal", "PT"],
-        ["ESP", "Espanha", "ES"],
-        ["FRA", "França", "FR"],
-        ["DEU", "Alemanha", "DE"],
-        ["ITA", "Itália", "IT"],
-        ["GBR", "Reino Unido", "GB"],
-        ["JPN", "Japão", "JP"]
-    ];
+  ds.addColumn("codigo");
+  ds.addColumn("nome");
+  ds.addColumn("sigla");
 
-    for (var i = 0; i < paises.length; i++) {
-        dataset.addRow(paises[i]);
-    }
-log.info('')
-    return dataset;
+  for (var i = 0; i < rows.length; i++) {
+    ds.addRow(rows[i]);
+  }
+
+  return ds;
 }
